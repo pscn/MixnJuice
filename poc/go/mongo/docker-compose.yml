@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
     poc:
         build: .
@@ -10,7 +10,9 @@ services:
         depends_on:
             - mongodb
     mongodb:
-        image: mongo:latest
+# https://github.com/globalsign/mgo marks mongo 4.0 as experimental
+# let's see where we fail with it...
+        image: mongo:3.6
         container_name: "mongodb"
         environment:
           - MONGO_DATA_DIR=/data/db
@@ -21,4 +23,4 @@ services:
 #          - ./data/db:/data/db
         ports:
             - 27017:27017
-        command: mongod --logpath=/dev/null # --quiet
+        command: mongod

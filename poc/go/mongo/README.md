@@ -4,6 +4,14 @@
 
 If you added modules, do `dep ensure` first.
 
+Use  `docker-compose rm` to get rid of old data volumes.
+
+Compiled in one command line it looks like this:
+
+```sh
+dep ensure && yes | docker-compose rm && docker-compose up --build
+```
+
 # Notes
 
 Uses dep for dependency managment.
